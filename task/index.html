@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>Charts</title>
+</head>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-chart.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet"> 
+
+<style>
+.m-l-sm{
+	margin-left:10px
+}
+.m-t-sm{
+   margin-top:10px;	
+}
+</style>
+<body ng-app="lumina" >
+  <div ng-controller="luminaController" class="col-md-12">
+	<div class="col-md-6 m-t-sm">
+		<button>No of Students</button><input type="number" ng-model="allObj.mdName" class="m-l-sm"><br><br>
+		<button ng-click="pieFun('english')">English</button><input type="number" ng-init="allObj.english = 5"  ng-model="allObj.english" class="m-l-sm" max={{allObj.mdName}}><br><br>
+		<button ng-click="pieFun('maths')">Maths</button><input type="number" ng-init="allObj.maths = 20" ng-model="allObj.maths" class="m-l-sm" max={{allObj.mdName}}><br><br>
+		<button ng-click="pieFun('science')">Science</button><input type="number" ng-init="allObj.science = 40" ng-model="allObj.science" class="m-l-sm" max={{allObj.mdName}}><br><br>
+		<button ng-click="pieFun('lang1')">Lang 1</button><input type="number" ng-init="allObj.lang1 = 30" ng-model="allObj.lang1" class="m-l-sm" max={{allObj.mdName}}><br><br>
+		<button ng-click="pieFun('lang2')">Lang 2</button><input type="number" ng-init="allObj.lang2 = 10" ng-model="allObj.lang2" class="m-l-sm" max={{allObj.mdName}}><br><br>
+		</div>
+		<div class="col-md-6 m-t-sm" style="width:500px;height:300px">
+		     <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series" chart-colors=['#4dff4d','#ff4d4d'] chart-options="chtOptions" chart-dataset-override="dataSets">
+             </canvas>
+			 </div>
+			 <div ng-if="pieCht" style="width:500px;height:300px">
+			   <canvas id="pie" class="chart chart-pie" chart-data="pieData" chart-labels="pieLabel" chart-colors=['#4dff4d','#ff4d4d']  chart-dataset-override="dataSets" chart-options="chtPieOptions">
+               </canvas> 
+			 </div>
+	</div>
+</body>
+</html>
